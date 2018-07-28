@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// import { ActivateGuard } from './guard/activate.guard';
+import { ActivateGuard } from './guard/activate.guard';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,16 @@ export class AppComponent {
 
   activeCheck: boolean;
 
-  constructor() {}
+  constructor(private _actv: ActivateGuard) {}
 
 
-  activateFn() {
+  login() {
     this.activeCheck = true;
-    // this._actv.setCanActivate(this.activeCheck);
+    this._actv.setCanActivate(this.activeCheck);
+  }
+
+  logout() {
+    this.activeCheck = false;
+    this._actv.setCanActivate(this.activeCheck);
   }
 }

@@ -1,4 +1,10 @@
+<div class="cta text-right">
 
+  <button (click)="login()" *ngIf="!activeCheck">Login</button>
+  
+  <button (click)="logout()" *ngIf="activeCheck">Logout</button>
+
+</div>
 <div>
 
     <p>
