@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivateGuard } from './guard/activate.guard';
+import { LoginService } from './services/login.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +12,17 @@ export class AppComponent {
 
   activeCheck: boolean;
 
-  constructor(private _actv: ActivateGuard) {}
+  constructor(private _actv: ActivateGuard,  private _loginSrv: LoginService, private _route: Router) {}
 
 
   login() {
-    this.activeCheck = true;
-    this._actv.setCanActivate(this.activeCheck);
+    this._loginSrv.login();
+    this.activeCheck = this._loginSrv.loginUser;
   }
 
   logout() {
-    this.activeCheck = false;
-    this._actv.setCanActivate(this.activeCheck);
+    this._loginSrv.logout();
+    this.activeCheck = this._loginSrv.loginUser;
+    this._route.navigate(['']);
   }
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule, appRoutingProviders } from './app.routers';
-
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { AppRoutingModule, appRoutingProviders } from './app.routers';
     AppRoutingModule
   ],
   providers: [ 
-    appRoutingProviders
+    appRoutingProviders,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
